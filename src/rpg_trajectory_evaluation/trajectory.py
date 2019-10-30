@@ -115,7 +115,7 @@ class Trajectory:
         pcts = [0.2, 0.4, 0.6, 0.8, 1.0]
         print("Computing preset subtrajectory lengths for relative errors...")
         print("Use percentage {0} of trajectory length.".format(pcts))
-        self.preset_boxplot_distances = [np.floor(pct*self.traj_length)
+        self.preset_boxplot_distances = [max(np.floor(pct*self.traj_length), 1.0)
                                          for pct in pcts]
 
         print("...done. Computed preset subtrajecory lengths:"
