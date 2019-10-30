@@ -4,15 +4,16 @@ import yaml
 import numpy as np
 
 def compute_statistics(data_vec):
+    n = len(data_vec)
     stats = dict()
     stats['rmse'] = float(
-        np.sqrt(np.dot(data_vec, data_vec) / len(data_vec)))
-    stats['mean'] = float(np.mean(data_vec))
-    stats['median'] = float(np.median(data_vec))
-    stats['std'] = float(np.std(data_vec))
-    stats['min'] = float(np.min(data_vec))
-    stats['max'] = float(np.max(data_vec))
-    stats['num_samples'] = int(len(data_vec))
+        0 if n == 0 else np.sqrt(np.dot(data_vec, data_vec) / len(data_vec)))
+    stats['mean'] = float(0 if n == 0 else np.mean(data_vec))
+    stats['median'] = float(0 if n == 0 else np.median(data_vec))
+    stats['std'] = float(0 if n == 0 else np.std(data_vec))
+    stats['min'] = float(0 if n == 0 else np.min(data_vec))
+    stats['max'] = float(0 if n == 0 else np.max(data_vec))
+    stats['num_samples'] = int(n)
 
     return stats
 
